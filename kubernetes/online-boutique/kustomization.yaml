@@ -14,6 +14,7 @@
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: online-boutique
 resources:
  - adservice.yaml
  - cartservice.yaml
@@ -26,6 +27,46 @@ resources:
  - productcatalogservice.yaml
  - recommendationservice.yaml
  - shippingservice.yaml
+images:
+  - name: frontend
+    newName: frontend
+    newTag: local-v1
+
+  - name: adservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice
+    newTag: v0.10.7
+
+  - name: cartservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/cartservice
+    newTag: v0.10.7
+
+  - name: checkoutservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/checkoutservice
+    newTag: v0.10.7
+
+  - name: currencyservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/currencyservice
+    newTag: v0.10.7
+
+  - name: emailservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/emailservice
+    newTag: v0.10.7
+
+  - name: paymentservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/paymentservice
+    newTag: v0.10.7
+
+  - name: productcatalogservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/productcatalogservice
+    newTag: v0.10.7
+
+  - name: recommendationservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/recommendationservice
+    newTag: v0.10.7
+
+  - name: shippingservice
+    newName: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/shippingservice
+    newTag: v0.10.7
 # components:
 # - ../kustomize/components/cymbal-branding
 # - ../kustomize/components/google-cloud-operations
