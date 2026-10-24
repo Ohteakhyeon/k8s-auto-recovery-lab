@@ -24,6 +24,12 @@ resource "aws_iam_role_policy_attachment" "eks_cluster" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
+# Initial VPC CNI permission for node bootstrap
+resource "aws_iam_role_policy_attachment" "eks_node_cni_bootstrap" {
+  role       = aws_iam_role.eks_node.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+}
+
 # ========================================
 # 2. EKS Worker Node IAM Role
 # ========================================

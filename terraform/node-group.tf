@@ -22,7 +22,10 @@ resource "aws_eks_node_group" "main" {
 
   depends_on = [
     aws_iam_role_policy_attachment.eks_worker_node,
-    aws_iam_role_policy_attachment.eks_ecr_pull
+    aws_iam_role_policy_attachment.eks_ecr_pull,
+    aws_iam_role_policy_attachment.eks_node_cni_bootstrap,
+    aws_route.internet,
+    aws_route_table_association.public
   ]
 
   tags = {
