@@ -21,3 +21,8 @@ variable "vpc_cidr" {
   type        = string
   default     = "10.0.0.0/16"
 }
+
+variable "eks_public_access_cidrs" {
+  description = "Allowed public CIDR blocks for EKS API access"
+  type        = list(string)
+}
