@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "ap-northeast-2"
+  region = var.aws_region
 
   default_tags {
     tags = {
-      Project     = "k8s-auto-recovery-lab"
+      Project     = var.project_name
       Environment = "lab"
       ManagedBy   = "Terraform"
     }
