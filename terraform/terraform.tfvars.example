@@ -1,0 +1,1 @@
+eks_public_access_cidrs = ["X.X.X.X/32"]
