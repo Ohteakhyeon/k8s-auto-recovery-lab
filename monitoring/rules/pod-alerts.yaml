@@ -1,0 +1,34 @@
+additionalPrometheusRulesMap:
+  online-boutique-alerts:
+    groups:
+      - name: online-boutique.rules
+        rules:
+          - alert: OnlineBoutiquePodNotReady
+            expr: kube_pod_status_ready{namespace="online-boutique",condition="true"} == 0
+            for: 1m
+            labels:
+              severity: warning
+              project: auto-recovery
+            annotations:
+              summary: "Online Boutique Pod Not Ready"
+              description: "Pod {{ $labels.pod }} is not ready."
+
+          - alert: OnlineBoutiqueContainerRestart
+            expr: increase(kube_pod_container_status_restarts_total{namespace="online-boutique"}[5m]) > 0
+            for: 0m
+            labels:
+              severity: warning
+              project: auto-recovery
+            annotations:
+              summary: "Online Boutique Container Restart"
+              description: "Container {{ $labels.container }} in Pod {{ $labels.pod }} restarted."
+
+          - alert: OnlineBoutiqueDeploymentUnavailable
+            expr: kube_deployment_spec_replicas{namespace="online-boutique"} > kube_deployment_status_replicas_available{namespace="online-boutique"}
+            for: 1m
+            labels:
+              severity: critical
+              project: auto-recovery
+            annotations:
+              summary: "Online Boutique Deployment Unavailable"
+              description: "Deployment {{ $labels.deployment }} has unavailable replicas."
