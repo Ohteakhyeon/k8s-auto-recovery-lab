@@ -1,0 +1,2 @@
+﻿"RunId","FaultStartTime","OldPod","NewPod","PodReadySec","EndpointReadySec","FirstHttpSuccessSec","StableHttpSec","FailureObserved","RecoveryConfirmed"
+"20261027-233621","2026-10-27T23:36:22.6285537+09:00","productcatalogservice-57d4565456-w486f","productcatalogservice-57d4565456-nghgv","6.435","4.475",,,"False","False"
