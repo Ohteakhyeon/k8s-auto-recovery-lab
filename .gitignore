@@ -7,3 +7,8 @@
 **/terraform.tfvars
 **/*.auto.tfvars
 **/*.tfplan
+
+# Terraform plan files
+*.tfplan
+*-tfplan
+*-tkplan

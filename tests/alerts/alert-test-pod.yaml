@@ -1,0 +1,31 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alert-test-pod
+  namespace: recovery-test
+  labels:
+    app: alert-test
+spec:
+  containers:
+    - name: server
+      image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/productcatalogservice:v0.10.7
+      env:
+        - name: PORT
+          value: "3550"
+        - name: DISABLE_PROFILER
+          value: "1"
+      ports:
+        - containerPort: 3550
+      readinessProbe:
+        grpc:
+          port: 3551
+        periodSeconds: 5
+        failureThreshold: 3
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          cpu: 200m
+          memory: 128Mi

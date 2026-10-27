@@ -1,0 +1,34 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: k6-hpa-smoke
+  namespace: recovery-test
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: k6
+          image: 007053125976.dkr.ecr.ap-northeast-2.amazonaws.com/k8s-auto-recovery/k6:2.2.0
+          imagePullPolicy: IfNotPresent
+          command:
+            - k6
+            - run
+            - /scripts/grpc-cluster-smoke.js
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+              readOnly: true
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: scripts
+          configMap:
+            name: k6-hpa-scripts
