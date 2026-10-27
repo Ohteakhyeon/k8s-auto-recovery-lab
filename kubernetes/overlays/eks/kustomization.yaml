@@ -12,4 +12,4 @@ patches:
 images:
   - name: frontend
     newName: 007053125976.dkr.ecr.ap-northeast-2.amazonaws.com/k8s-auto-recovery/frontend
-    newTag: 39391e206c5cc80c738b6adc45d673e173005106
+    newTag: 6c523ad28c5229d97c18de05b0a3d2c1bf2bb9d8
