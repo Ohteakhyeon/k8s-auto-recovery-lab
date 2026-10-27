@@ -32,6 +32,7 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/backoff"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
@@ -139,7 +140,7 @@ func main() {
 	mustMapEnv(&svc.shoppingAssistantSvcAddr, "SHOPPING_ASSISTANT_SERVICE_ADDR")
 
 	mustConnGRPC(ctx, &svc.currencySvcConn, svc.currencySvcAddr)
-	mustConnGRPC(ctx, &svc.productCatalogSvcConn, svc.productCatalogSvcAddr)
+	mustConnGRPCProductCatalog(ctx, &svc.productCatalogSvcConn, svc.productCatalogSvcAddr)
 	mustConnGRPC(ctx, &svc.cartSvcConn, svc.cartSvcAddr)
 	mustConnGRPC(ctx, &svc.recommendationSvcConn, svc.recommendationSvcAddr)
 	mustConnGRPC(ctx, &svc.shippingSvcConn, svc.shippingSvcAddr)
@@ -232,4 +233,23 @@ func mustConnGRPC(ctx context.Context, conn **grpc.ClientConn, addr string) {
 	if err != nil {
 		panic(errors.Wrapf(err, "grpc: failed to connect %s", addr))
 	}
+}
+
+func mustConnGRPCProductCatalog(ctx context.Context, conn **grpc.ClientConn, addr string) {
+    cfg := backoff.DefaultConfig
+    cfg.BaseDelay = 200 * time.Millisecond
+    cfg.MaxDelay = 2 * time.Second
+
+    var err error
+    *conn, err = grpc.NewClient(addr,
+        grpc.WithTransportCredentials(insecure.NewCredentials()),
+        grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
+        grpc.WithConnectParams(grpc.ConnectParams{
+            Backoff: cfg,
+            MinConnectTimeout: 3 * time.Second,
+        }),
+    )
+    if err != nil {
+        panic(errors.Wrapf(err, "grpc: failed to create ProductCatalog client %s", addr))
+    }
 }
