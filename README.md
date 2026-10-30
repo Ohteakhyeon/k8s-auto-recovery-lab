@@ -144,7 +144,6 @@ ProductCatalog gRPC API에 100 RPS 부하를 180초간 발생시켜 성능을 �
 | 장애 상황 | Pod NotReady |
 | Prometheus Alert | Firing 확인 |
 | Alertmanager | 알림 그룹 확인 |
-| MTTD | 정량 측정 미완료 |
 
 ---
 
