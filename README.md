@@ -179,15 +179,15 @@ ProductCatalog gRPC API에 100 RPS 부하를 180초간 발생시켜 성능을 �
 
 프로젝트 설계 과정과 실험 방법, 실제 사용한 명령어 및 결과는 별도 문서로 정리했습니다.
 
-- 프로젝트 기획서
-- 전체 아키텍처 설계서
-- Docker 설계서
-- Kubernetes 설계서
-- Terraform / AWS 설계서
-- CI/CD 설계서
-- Monitoring 설계서
-- 장애 테스트 계획서
-- 장애 테스트 결과 보고서
-- Runbook / 트러블슈팅
+- [프로젝트 기획서](docs/01-planning/project-plan.md)
+- [전체 아키텍처 설계서](docs/03-architecture/system-architecture.md)
+- [Docker 설계서](docs/04-design/docker-design.md)
+- [Kubernetes 설계서](docs/04-design/kubernetes-design.md)
+- [Terraform / AWS 설계서](docs/04-design/terraform-aws-design.md)
+- [CI/CD 설계서](docs/04-design/cicd-design.md)
+- [Monitoring 설계서](docs/04-design/monitoring-design.md)
+- [장애 테스트 계획서](docs/05-testing/failure-test-plan.md)
+- [장애 테스트 결과 보고서](docs/05-testing/failure-test-results.md)
+- [Runbook / 트러블슈팅](docs/06-operations/troubleshooting.md)
 
 **Notion:** https://locrian-birthday-9a8.notion.site/3f790fbea2d28085918aeae7d9770c47
