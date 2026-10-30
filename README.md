@@ -29,6 +29,8 @@
 
 <img width="1024" height="1536" alt="전체아키텍처" src="https://github.com/user-attachments/assets/a5b75251-8afa-4da2-8da0-9915748a6a3f" />
 
+---
+
 **구성요소별 역할**
 
 - **Terraform:** VPC, IAM, EKS, Managed Node Group 구성 및 관리
