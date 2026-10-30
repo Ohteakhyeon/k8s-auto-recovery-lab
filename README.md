@@ -27,7 +27,7 @@
 
 ## 2. 시스템 아키텍처
 
-<img width="900" height="1400" alt="전체아키텍처" src="https://github.com/user-attachments/assets/a5b75251-8afa-4da2-8da0-9915748a6a3f" />
+<img width="500" height="1000" alt="전체아키텍처" src="https://github.com/user-attachments/assets/a5b75251-8afa-4da2-8da0-9915748a6a3f" />
 
 ---
 
