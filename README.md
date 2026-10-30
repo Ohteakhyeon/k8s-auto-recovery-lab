@@ -188,6 +188,7 @@ ProductCatalog gRPC API에 100 RPS 부하를 180초간 발생시켜 성능을 �
 - [Monitoring 설계서](docs/04-design/monitoring-design.md)
 - [장애 테스트 계획서](docs/05-testing/failure-test-plan.md)
 - [장애 테스트 결과 보고서](docs/05-testing/failure-test-results.md)
-- [Runbook / 트러블슈팅](docs/06-operations/troubleshooting.md)
+- [Runbook](docs/06-operations/runbook.md)
+- [트러블슈팅](docs/06-operations/troubleshooting.md)
 
 **Notion:** https://locrian-birthday-9a8.notion.site/3f790fbea2d28085918aeae7d9770c47
